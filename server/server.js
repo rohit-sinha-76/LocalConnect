@@ -7,7 +7,6 @@ const healthRoutes = require('./src/routes/healthRoutes');
 const authRoutes = require('./src/routes/authRoutes');
 const workerRoutes = require('./src/routes/workerRoutes');
 const bookingRoutes = require('./src/routes/bookingRoutes');
-const { expireBookings } = require('./src/services/bookingService');
 const reviewRoutes = require('./src/routes/reviewRoutes');
 
 const app = express();
@@ -29,20 +28,27 @@ app.use('/api/reviews', reviewRoutes);
 // Error handling middleware (must be last)
 app.use(errorMiddleware);
 
-const PORT = process.env.PORT || 5000;
+// Only start listening when run directly (not during tests)
+let server;
+if (require.main === module) {
+  const { expireBookings } = require('./src/services/bookingService');
+  const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  server = app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 
-  // Run booking expiry check every 10 minutes
-  setInterval(async () => {
-    try {
-      const result = await expireBookings();
-      if (result.modifiedCount > 0) {
-        console.log(`[Booking] Expired ${result.modifiedCount} booking(s)`);
+    // Run booking expiry check every 10 minutes
+    setInterval(async () => {
+      try {
+        const result = await expireBookings();
+        if (result.modifiedCount > 0) {
+          console.log(`[Booking] Expired ${result.modifiedCount} booking(s)`);
+        }
+      } catch (error) {
+        console.error(`[Booking] Error expiring bookings: ${error.message}`);
       }
-    } catch (error) {
-      console.error(`[Booking] Error expiring bookings: ${error.message}`);
-    }
-  }, 10 * 60 * 1000);
-});
+    }, 10 * 60 * 1000);
+  });
+}
+
+module.exports = { app, server };

@@ -100,18 +100,18 @@ const updateWorkerProfile = async (userId, profileId, data) => {
 };
 
 const getWorkers = async (query) => {
-  const page = parseInt(query.page) || 1;
-  const limit = parseInt(query.limit) || 10;
+  const page = Math.max(parseInt(query.page) || 1, 1);
+  const limit = Math.min(Math.max(parseInt(query.limit) || 10, 1), 100);
   const skip = (page - 1) * limit;
 
   const filter = {};
 
   if (query.skill) {
-    filter.skills = query.skill;
+    filter.skills = { $regex: query.skill.trim(), $options: 'i' };
   }
 
   if (query.location) {
-    filter.location = { $regex: query.location, $options: 'i' };
+    filter.location = { $regex: query.location.trim(), $options: 'i' };
   }
 
   const workers = await WorkerProfile.find(filter)

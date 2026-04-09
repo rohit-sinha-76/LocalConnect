@@ -4,18 +4,7 @@ node_modules/
 # Environment variables
 .env
 .env.local
-.env.example
-
-# Documentation / context files (not needed in deployment)
-context.md
-rules.md
-db-schema.md
-api-contract.md
-other-important.md
-
-# Test files
-server/test-booking.md
-server/test-booking.sh
+.env.*.local
 
 # OS files
 .DS_Store
@@ -38,10 +27,25 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Build output (if any)
-dist/
-build/
+# Frontend build output
+client/dist/
+client/build/
 
 # Temporary files
 tmp/
 temp/
+
+# Documentation / context files (project setup notes, not code)
+context.md
+rules.md
+db-schema.md
+api-contract.md
+other-important.md
+
+# Test scripts (manual curl tests, not automated)
+server/test-booking.md
+server/test-booking.sh
+
+# Package lock files (optional - remove these lines if you want to keep them)
+# client/package-lock.json
+# server/package-lock.json

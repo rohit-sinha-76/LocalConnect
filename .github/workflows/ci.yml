@@ -1,0 +1,55 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    services:
+      mongo:
+        image: mongo:7
+        ports:
+          - 27017:27017
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install backend dependencies
+        working-directory: ./server
+        run: npm ci
+
+      - name: Run backend tests
+        working-directory: ./server
+        env:
+          MONGO_URI: mongodb://localhost:27017/localconnect_test
+          MONGO_URI_TEST: mongodb://localhost:27017/localconnect_test
+          JWT_SECRET: test_secret_for_ci
+        run: npm test
+
+      - name: Install frontend dependencies
+        working-directory: ./client
+        run: npm ci
+
+      - name: Build frontend
+        working-directory: ./client
+        run: npm run build
+
+      - name: Docker build check
+        working-directory: ./server
+        run: |
+          if command -v docker &> /dev/null; then
+            docker build -t localconnect-backend .
+          else
+            echo "Docker not available, skipping build check"
+          fi
