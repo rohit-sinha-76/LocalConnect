@@ -77,6 +77,30 @@ npm run dev
 
 The frontend runs on port 5173 and the backend on port 5000.
 
+**Running with Docker:**
+
+This project includes a `docker-compose.yml` file that runs the backend and MongoDB together.
+
+```bash
+docker compose up --build -d
+```
+
+The backend will be available on `http://localhost:5000` and MongoDB on `localhost:27017`.
+
+To stop the containers:
+
+```bash
+docker compose down
+```
+
+To stop and remove the database volume:
+
+```bash
+docker compose down -v
+```
+
+Note: the frontend still needs to be run locally with `npm run dev` since it uses Vite's development server.
+
 ## Environment Variables
 
 Create a `.env` file in the `server` folder with these values:
