@@ -125,4 +125,3 @@ Do not share this file or commit it to the repository.
 
 This project was built as part of my full-stack development learning. I wanted to build a real-world system with proper backend logic, clean architecture, and a usable frontend. The focus was on getting the details right — booking validation, role-based access, and data consistency — rather than adding unnecessary features.
 
-You can reach me at [your email] or view my other projects on [your GitHub profile].
