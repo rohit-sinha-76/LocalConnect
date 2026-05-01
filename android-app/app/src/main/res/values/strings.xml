@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LocalConnect</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="find_workers">Find Workers</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="logout">Logout</string>
+    <string name="book_worker">Book this Worker</string>
+    <string name="confirm_booking">Confirm Booking</string>
+    <string name="search">Search</string>
+    <string name="skill_hint">Skill (e.g. plumber)</string>
+    <string name="location_hint">Location (e.g. Jagdalpur)</string>
+    <string name="service_hint">Service type (e.g. Plumbing)</string>
+    <string name="pick_start">Pick Start Time</string>
+    <string name="pick_end">Pick End Time</string>
+    <string name="no_bookings">No bookings yet</string>
+    <string name="no_workers">No workers found</string>
+    <string name="back">← Back</string>
+    <string name="accept">Accept</string>
+    <string name="complete">Complete</string>
+    <string name="cancel">Cancel</string>
+    <string name="review">Review</string>
+    <string name="go_register">Don\'t have an account? Register</string>
+    <string name="go_login">Already have an account? Login</string>
+</resources>

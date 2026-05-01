@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#1A237E</color>
+    <color name="primary_dark">#0D1B6E</color>
+    <color name="primary_light">#3949AB</color>
+    <color name="accent">#1565C0</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="background">#F4F6FA</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#616161</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="status_pending">#F57F17</color>
+    <color name="status_confirmed">#1565C0</color>
+    <color name="status_completed">#2E7D32</color>
+    <color name="status_cancelled">#C62828</color>
+    <color name="status_expired">#616161</color>
+    <color name="verified_green">#2E7D32</color>
+    <color name="error_red">#C62828</color>
+    <color name="btn_accept">#1B5E20</color>
+    <color name="btn_cancel">#B71C1C</color>
+    <color name="btn_complete">#0D47A1</color>
+</resources>
